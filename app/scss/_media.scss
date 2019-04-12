@@ -53,6 +53,9 @@
 .slider__wrapper .slide-item__text{
   font-size: 14px;
 }
+  .services__line{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 650px){
@@ -83,6 +86,12 @@
   }
   .slider__wrapper .slide-item__text{
     font-size: 12px;
+  }
+  .services__head{
+    text-align: center;
+    .services__head-btn{
+      text-align: center;
+    }
   }
 }
 

@@ -1,52 +1,55 @@
-var gulp = require('gulp'),
-    scss = require('gulp-sass'),
-    browserSync = require('browser-sync'),
-    uglifyjs = require('gulp-uglifyjs'),
-    concat = require('gulp-concat'),
-    rename = require('gulp-rename'),
-    autoprefixer = require('gulp-autoprefixer');
+var gulp = require("gulp"),
+  scss = require("gulp-sass"),
+  browserSync = require("browser-sync"),
+  uglifyjs = require("gulp-uglifyjs"),
+  concat = require("gulp-concat"),
+  rename = require("gulp-rename"),
+  autoprefixer = require("gulp-autoprefixer");
 
-gulp.task('scss', function(){
-    return gulp.src('app/scss/**/*.scss')
-            .pipe(scss({outputStyle: 'compressed'}))
-            .pipe(autoprefixer({
-                browsers: ['last 8 versions'],
-                }))
-            .pipe(rename({suffix: '.min'}))
-            .pipe(gulp.dest('app/css'))
-            .pipe(browserSync.reload({stream: true}))
+gulp.task("scss", function() {
+  return gulp
+    .src("app/scss/**/*.scss")
+    .pipe(scss({ outputStyle: "compressed" }))
+    .pipe(
+      autoprefixer({
+        browsers: ["last 8 versions"]
+      })
+    )
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(gulp.dest("app/css"))
+    .pipe(browserSync.stream());
 });
 
-gulp.task('script', function(){
-    return gulp.src('app/js/**/*.js')
-            .pipe(browserSync.reload({stream: true}))
+gulp.task("html", function() {
+  return gulp.src("app/*.html").pipe(browserSync.stream());
 });
 
-gulp.task('code', function(){
-    return gulp.src('app/*.html')
-            .pipe(browserSync.reload({stream: true}))
+gulp.task("browser-sync", function(done) {
+  browserSync.init({
+    server: {
+      baseDir: "app"
+    }
+  });
+  done();
 });
 
-gulp.task('browser-sync', function(){
-    browserSync.init({
-        server : {
-            baseDir: "app"
-        }
-    })
+gulp.task("js", function() {
+  return gulp
+    .src([
+      "app/libs/jquery/dist/jquery.js",
+      "app/libs/slick-carousel/slick/slick.js"
+    ])
+    .pipe(concat("libs.min.js"))
+    .pipe(uglifyjs())
+    .pipe(gulp.dest("app/js"))
+    .pipe(browserSync.stream());
 });
 
-gulp.task('js', function(){
-    return gulp.src(
-        ['app/libs/jquery/dist/jquery.js', 'app/libs/slick-carousel/slick/slick.js'])
-        .pipe(concat('libs.min.js'))
-        .pipe(uglifyjs())
-        .pipe(gulp.dest('app/js'))
+gulp.task("watch", function(done) {
+  gulp.watch("app/scss/**/*.scss", gulp.parallel("scss"));
+  gulp.watch("app/js/main.js", gulp.parallel("js"));
+  gulp.watch("app/*.html", gulp.parallel("html"));
+  done();
 });
 
-gulp.task('watch', function(){
-    gulp.watch('app/scss/**/*.scss', gulp.parallel('scss'))
-    gulp.watch('app/js/**/*.js', gulp.parallel('script'))
-    gulp.watch('app/*.html', gulp.parallel('code'))
-});
-
-gulp.task('default', gulp.parallel('scss', 'browser-sync', 'watch', 'script'));
+gulp.task("default", gulp.series("watch", "scss", "js", "browser-sync"));
