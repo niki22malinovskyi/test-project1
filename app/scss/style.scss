@@ -358,5 +358,43 @@ form textarea{
 .form__img{
   position: absolute;
   right: 0;
-  bottom: -44px;
+  bottom: -45px;
+}
+.items{
+  padding: 50px 0;
+  background-image: url('../img/items-bgd.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+}
+.items__icon{
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ffcd21;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 25px;
+}
+.items__icon::after{
+  content: "\f00c";
+  position: absolute;
+  font-family: $icon;
+  top: 30%;
+  left: 30%;
+}
+
+.items__title{
+  font-family: $roboto;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+.item__text{
+  font-family: $serif;
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 20px;
 }
