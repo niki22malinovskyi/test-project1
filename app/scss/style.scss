@@ -184,10 +184,10 @@ ul{
 .services__head{
   margin-bottom: 90px;
 }
-.services__inner-line-text{
+.services__inner-line-text, .form__inner-line-text{
   display: flex;
 }
-.services__line span{
+.services__line span, .form__line span{
   display: block;
   height: 2px;
   width: 105px;
@@ -195,13 +195,13 @@ ul{
   background-color: #ffcd21;
   margin-right: 25px;
 }
-.services__title{
+.services__title, .form__title{
   font-size: 24px;
   font-family: $roboto;
   font-weight: 500;
   margin-bottom: 20px;
 }
-.services__text{
+.services__text, .form__text{
   font-size: 14px;
   font-family: $serif;
   color: #5e5e5e;
@@ -309,4 +309,54 @@ ul{
   right: -13px;
   font-family: $icon;
   color: #000;
+}
+.form{
+  padding: 45px 0;
+}
+.form__inner-line-text{
+  margin-bottom: 40px;
+}
+form{
+  position: relative;
+}
+form label{
+  font-family: $roboto;
+  line-height: 38px;
+  font-size: 15px;
+  font-weight: 400;
+}
+form input, select{
+  width: 100%;
+  padding: 0 10px;
+  height: 40px;
+  margin-bottom: 0;
+}
+form textarea{
+  width: 100%;
+  height: 195px;
+  padding: 10px 10px;
+  resize: none;
+  margin-bottom: 33px;
+}
+.form__inner-btn{
+  text-align: right;
+}
+.form__inner-btn input{
+  display: inline-block;
+  height: 40px;
+  width: 210px;
+  font-size: 14px;
+  border: 1px solid #ffcd21;
+  border-right: 20px solid #ffcd21;
+  font-family: $roboto;
+  font-weight: 500;
+  color: #000;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+.form__img{
+  position: absolute;
+  right: 0;
+  bottom: -44px;
 }

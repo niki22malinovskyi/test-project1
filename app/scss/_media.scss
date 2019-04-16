@@ -4,6 +4,11 @@
   display: flex !important;
 }
 }
+@media screen and (max-width: 1200px){
+   form .form__img{
+     display: none;
+   }
+}
 @media screen and (max-width: 768px){
 .contact-inner{
   flex-direction: column;
@@ -53,7 +58,7 @@
 .slider__wrapper .slide-item__text{
   font-size: 14px;
 }
-  .services__line{
+  .form__line, .services__line{
     display: none;
   }
 }
