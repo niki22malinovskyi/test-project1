@@ -9,6 +9,21 @@
      display: none;
    }
 }
+@media screen and (max-width: 996px){
+.news__slide__wrapper{
+  margin-bottom: 100px;
+}
+.slick-left{
+  position: absolute;
+  bottom: -75px;
+  left: 40%;
+}
+.slick-right{
+  position: absolute;
+  bottom: -75px;
+  left: 60%;
+}
+}
 @media screen and (max-width: 768px){
 .contact-inner{
   flex-direction: column;
@@ -25,10 +40,10 @@
 .menu .icon-bars{
   display: block;
 }
-.header-menu{
+.top-menu{
   position: relative;
 }
-.header-inner__menu .menu ul{
+.inner__menu .menu ul{
   display: none;
   text-align: center;
   position: absolute;
@@ -58,8 +73,21 @@
 .slider__wrapper .slide-item__text{
   font-size: 14px;
 }
-  .form__line, .services__line{
+  .form__line, .services__line, .news__line{
     display: none;
+  }
+  .news{
+    text-align: center;
+  }
+  .news .news__label{
+    position: absolute;
+    left: 150px;
+  }
+  .news__prev-text {
+    margin-bottom: 35px;
+  }
+  .info__phone, .info__mail, .info__street, .info__inner-btn, .info__text, .info__title{
+    text-align: center;
   }
 }
 
@@ -97,6 +125,12 @@
     .services__head-btn{
       text-align: center;
     }
+  }
+  .news__inner-text{
+    text-align: center;
+  }
+  .news .news__btn{
+    text-align: center;
   }
 }
 
